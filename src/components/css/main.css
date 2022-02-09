@@ -1,0 +1,204 @@
+
+
+
+/*[ FONT ]
+///////////////////////////////////////////////////////////
+*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700');
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+
+
+
+/*[ RESTYLE TAG ]
+///////////////////////////////////////////////////////////
+*/
+* {
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	font-family: Montserrat, sans-serif;
+  font-weight: 400;
+}
+
+/* ------------------------------------ */
+a {
+	font-family: Montserrat;
+  font-weight: 400;
+	font-size: 15px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+	transition: all 0.4s;
+	-webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+}
+
+a:focus {
+	outline: none !important;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #ec1d25;
+}
+
+/* ------------------------------------ */
+h1,h2,h3,h4,h5,h6 {
+	margin: 0px;
+}
+
+p {
+	font-family: Montserrat;
+  font-weight: 400;
+	font-size: 15px;
+	line-height: 1.7;
+	color: #666666;
+	margin: 0px;
+}
+
+ul, li {
+	margin: 0px;
+	list-style-type: none;
+}
+
+
+/* ------------------------------------ */
+input {
+	outline: none;
+	border: none !important;
+}
+
+textarea {
+  outline: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+  box-shadow: 0 0 0px 2px #ec1d25;
+  -moz-box-shadow: 0 0 0px 2px #ec1d25;
+  -webkit-box-shadow: 0 0 0px 2px #ec1d25;
+  -o-box-shadow: 0 0 0px 2px #ec1d25;
+  -ms-box-shadow: 0 0 0px 2px #ec1d25;
+}
+
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+textarea:focus::-webkit-input-placeholder { color:transparent; }
+textarea:focus:-moz-placeholder { color:transparent; }
+textarea:focus::-moz-placeholder { color:transparent; }
+textarea:focus:-ms-input-placeholder { color:transparent; }
+
+input::-webkit-input-placeholder { color: #aaaaaa; }
+input:-moz-placeholder { color: #aaaaaa; }
+input::-moz-placeholder { color: #aaaaaa; }
+input:-ms-input-placeholder { color: #aaaaaa; }
+
+textarea::-webkit-input-placeholder { color: #aaaaaa; }
+textarea:-moz-placeholder { color: #aaaaaa; }
+textarea::-moz-placeholder { color: #aaaaaa; }
+textarea:-ms-input-placeholder { color: #aaaaaa; }
+
+/* ------------------------------------ */
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+
+/*[ Button3 ]
+///////////////////////////////////////////////////////////
+*/
+.btn3 {
+  background: #111111;
+  border-radius: 10px;
+}
+
+.btn3:hover {
+  background-color: #ec1d25;
+  color: white;
+}
+
+
+
+/*[ Calendar ]
+///////////////////////////////////////////////////////////
+*/
+td.active {
+  background-color: #ec1d25 !important;
+}
+
+input[type="date" i] {
+  padding: 14px;
+}
+
+.table-condensed td, .table-condensed th {
+  font-size: 14px;
+  font-family: Montserrat;
+  font-weight: 400;
+}
+.daterangepicker {
+    width: 339px;
+    box-shadow: 0px 3px 25px rgba(0,0,0,0.1);
+    border: none;
+    margin-top: 10px;
+}
+.daterangepicker .calendar {
+  max-width: inherit;
+}
+.daterangepicker thead tr th {
+  padding: 10px 0;
+}
+.daterangepicker .table-condensed th select {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 5px;
+}
+.daterangepicker td {
+    width: 60px;
+    height: 35px;
+}
+
+
+.check {
+  width: 100px;
+  height: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

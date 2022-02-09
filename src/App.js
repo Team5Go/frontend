@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Reservation from './components/Reservation';
+import Confirmation from './components/Confirmation';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
+  const [order, setOrder] = useState({
+    date: '',
+    time: '',
+    people: '',
+    table: '',
+    fName: '',
+    lName: '',
+    phone: '',
+    email: ''
+})
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={<Reservation order={order} setOrder={setOrder}/> }></Route>
+        <Route path='/confirmation' element={<Confirmation orderDetails={order}/>} />
+      </Routes>
+
     </div>
   );
 }
