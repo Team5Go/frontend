@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -8,7 +7,6 @@ import Form from 'react-bootstrap/Form'
 import FormSelect from 'react-bootstrap/FormSelect'
 import bookingImage from './images/planOfRestaurant.jpg'
 
-import Confirmation from './Confirmation';
 import './css/main.css'
 import './css/util.css'
 
@@ -47,7 +45,7 @@ const Reservation = ({order, setOrder}) => {
 									Date
 								</span>
                                 <div className="flex-wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="date" name="date" onChange={handleChange} value={order.date} />
+									<input className="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="date" name="date" onChange={handleChange} value={order.date} required />
 
 								</div>
 
@@ -58,7 +56,7 @@ const Reservation = ({order, setOrder}) => {
 
 									{/* <!-- Select2 --> */}
                                     <div className="flex-wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<FormSelect className="sizefull txt10 p-l-20"  name="time" value={order.time} onChange={handleChange}>
+									<FormSelect className="input sizefull txt10 p-l-20"  name="time" value={order.time} onChange={handleChange} required >
 										<option value='9:00'>9:00 </option>
 										<option value='9:30'>9:30 </option>
 										<option value='10:00'>10:00</option>
@@ -88,7 +86,7 @@ const Reservation = ({order, setOrder}) => {
 
 								<div className="wrap-inputpeople size12 bo2 bo-rad-10 m-t-3 m-b-23">
 									{/* <!-- Select2 --> */}
-									<FormSelect className="sizefull txt10 p-l-20" name="people" value={order.people} onChange={handleChange}>
+									<FormSelect className="input sizefull txt10 p-l-20" name="people" value={order.people} onChange={handleChange} required >
 										<option value='1 person'>1 person</option>
                                         <option value='2 people'>2 people</option>
 										<option value='3 people'>3 people</option>
@@ -112,8 +110,9 @@ const Reservation = ({order, setOrder}) => {
 
 								<div className="wrap-inputtable size12 bo2 bo-rad-10 m-t-3 m-b-23">
 									{/* <!-- Select2 --> */}
-									<FormSelect className="sizefull txt10 p-l-20" name="table" value={order.table} onChange={handleChange}>
-										<option value='1'>1</option>
+									<FormSelect className="input sizefull txt10 p-l-20" name="table" placeholder='Choose Your Table' value={order.table} onChange={handleChange}>
+                                        <option value="" disabled selected>Choose your table ...</option>
+                                        <option value='1'>1</option>
 										<option value='2'>2</option>
 										<option value='3'>3</option>
 										<option value='4'>4</option>
@@ -141,7 +140,7 @@ const Reservation = ({order, setOrder}) => {
 								</span>
 
 								<div className="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="fName" placeholder="First Name" value={order.fName} onChange={handleChange}/>
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="fName" placeholder="First Name" value={order.fName} onChange={handleChange} required />
 								</div>
 
                                 {/* <!-- Last name --> */}
@@ -159,7 +158,7 @@ const Reservation = ({order, setOrder}) => {
 								</span>
 
 								<div className="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" onChange={handleChange} value={order.phone}/>
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" onChange={handleChange} value={order.phone} required />
 								</div>
 
 								{/* <!-- Email --> */}
@@ -168,7 +167,7 @@ const Reservation = ({order, setOrder}) => {
 								</span>
 
 								<div className="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" onChange={handleChange} value={order.email} />
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" onChange={handleChange} value={order.email} required />
 								</div>
 							</Col>
                     </Row>
@@ -176,7 +175,7 @@ const Reservation = ({order, setOrder}) => {
                     <div className="wrap-btn-booking flex-c-m m-t-6">
 							{/* <!-- Button3 --> */}
 							<button type="submit" className="btn3 flex-c-m size13 txt11 trans-0-4">
-								Book Table
+                            {/* <Link to='/confirmation' style={{'textDecoration': 'none', 'color': 'white'}}>Book Table</Link> */}
 							</button>
 						</div>
                 </Form>
@@ -191,7 +190,7 @@ const Reservation = ({order, setOrder}) => {
 					</div>
 				</div>
        </Row> 
-       <Link to='/confirmation'>Confirmation page</Link>
+    
   
        
    </Container>

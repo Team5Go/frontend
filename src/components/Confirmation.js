@@ -9,7 +9,6 @@ import Table from 'react-bootstrap/Table'
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import './css/main.css'
 import './css/util.css'
-import Reservation from './Reservation';
 import check from './images/check-2.jpg'
 
 const Confirmation = ({orderDetails}) => {
@@ -30,7 +29,7 @@ const Confirmation = ({orderDetails}) => {
                     </Row>
 
                     <Row className='t-center'>
-                        <h1 className='tit2'>{orderDetails.fName}</h1>
+                        <h1 className='tit2'>Hey {orderDetails.fName} {orderDetails.lName}</h1>
                         <h1 className='txt4'>Thank You For Your Order!</h1>
                         <p>We will be glad to see you in our restaurant.</p>
                     </Row>
@@ -48,30 +47,30 @@ const Confirmation = ({orderDetails}) => {
                                 
                             <tr>
                                 <td>Date</td>
-                                <td>2/8/2022</td>
+                                <td>{orderDetails.date}</td>
                             </tr>
                             <tr>
                                 <td>Time</td>
-                                <td>20:00</td>
+                                <td>{orderDetails.time}</td>
                             </tr>
                             <tr>
                                 <td>People</td>
-                                <td>4</td>
+                                <td>{orderDetails.people}</td>
                             </tr>
                             <tr>
                                 <td>Table</td>
-                                <td>2</td>
+                                <td>{orderDetails.table}</td>
                             </tr>
                             <tr>
                                 <td>Phone:</td>
-                                <td>314-793-9446</td>
+                                <td>{orderDetails.phone}</td>
                             </tr>
                             <tr>
                                 <td>Email:</td>
-                                <td>email@gmail.com</td>
+                                <td>{orderDetails.email}</td>
                             </tr>
                             <tr>
-                                <td></td>
+                                
                             </tr>
                             </tbody>
                             

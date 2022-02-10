@@ -74,45 +74,22 @@ ul, li {
 
 
 /* ------------------------------------ */
-input {
+ input {
 	outline: none;
 	border: none !important;
+}
+
+select {
+	outline: none;
+
 }
 
 textarea {
   outline: none;
 }
 
-textarea:focus, input:focus {
-  border-color: transparent !important;
-  box-shadow: 0 0 0px 2px #ec1d25;
-  -moz-box-shadow: 0 0 0px 2px #ec1d25;
-  -webkit-box-shadow: 0 0 0px 2px #ec1d25;
-  -o-box-shadow: 0 0 0px 2px #ec1d25;
-  -ms-box-shadow: 0 0 0px 2px #ec1d25;
-}
 
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; }
-input:focus::-moz-placeholder { color:transparent; }
-input:focus:-ms-input-placeholder { color:transparent; }
 
-textarea:focus::-webkit-input-placeholder { color:transparent; }
-textarea:focus:-moz-placeholder { color:transparent; }
-textarea:focus::-moz-placeholder { color:transparent; }
-textarea:focus:-ms-input-placeholder { color:transparent; }
-
-input::-webkit-input-placeholder { color: #aaaaaa; }
-input:-moz-placeholder { color: #aaaaaa; }
-input::-moz-placeholder { color: #aaaaaa; }
-input:-ms-input-placeholder { color: #aaaaaa; }
-
-textarea::-webkit-input-placeholder { color: #aaaaaa; }
-textarea:-moz-placeholder { color: #aaaaaa; }
-textarea::-moz-placeholder { color: #aaaaaa; }
-textarea:-ms-input-placeholder { color: #aaaaaa; }
-
-/* ------------------------------------ */
 button {
 	outline: none !important;
 	border: none;
