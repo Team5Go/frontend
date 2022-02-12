@@ -5,6 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import {Route, Routes, Link} from 'react-router-dom'
 import EditOrder from './components/EditOrder';
+import React from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import Home from './components/routes/Home';
+import About from './components/routes/About';
+import Contact from './components/routes/Contact';
 
 function App() {
   const [orders, setOrders] = useState([])
@@ -35,15 +42,10 @@ let addOrder = (order) =>{
                 <Route path='/reservation' element={<Reservation addOrder={addOrder} /> }></Route>
         <Route path='/reservation/:id' element={<Confirmation setOrders={setOrders}/>} />
         <Route path='/edit/:id' element={<EditOrder setOrders={setOrders} />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
       </Routes>
-
-      {/* {orders?.map(o => {
-        return (
-          <Link to={`/confirmation/${o._id}`} key={o._id}><h1>{o.firstName}</h1></Link>
-          
-        )
-      })} */}
-
     </div>
   );
 }
