@@ -9,9 +9,9 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Home from './components/routes/Home';
-import About from './components/routes/About';
-import Contact from './components/routes/Contact';
+import Home from './files/routes/Home';
+import About from './files/routes/About';
+import Contact from './files/routes/Contact';
 
 function App() {
   const [orders, setOrders] = useState([])
