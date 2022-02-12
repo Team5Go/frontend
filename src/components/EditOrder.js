@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -10,9 +10,9 @@ import bookingImage from './images/planOfRestaurant.jpg'
 import './css/main.css'
 import './css/util.css'
 
-const Reservation = ({addOrder}) => {
+const EditOrder = ({setOrders}) => {
 
-    const [newOrder, setNewOrder] = useState({
+    const [editOrder, setEditedOrder] = useState({
         date: '',
         time: '',
         partySize: '',
@@ -22,40 +22,56 @@ const Reservation = ({addOrder}) => {
         phone: '',
         email: ''
     })
+    console.log(editOrder);
+
+    const {id} = useParams()
+
+    useEffect(() => {
+        fetch('http://localhost:4000/'+id)
+        .then((res) => res.json())
+        .then((resJson) => {
+            console.log(resJson);
+            setEditedOrder(resJson)
+        })
+        .catch(error => console.error({'Error': error}))
+    }, [])
+
 
     const navigate = useNavigate()
-    const goToConfirmationPage = (id) => navigate('/reservation/' + id)
+    const goToConfirmationPage = () => navigate('/reservation/'+id)
     
     const handleSubmit = async (e) => {
-        // console.log(order);
+        console.log(e);
+
         e.preventDefault()
-        let response = await fetch('http://localhost:4000', {
-            method: 'POST',
+        let response = await fetch('http://localhost:4000/edit/'+id, {
+            method: 'PUT',
             body: JSON.stringify({
-                date: newOrder.date,
-                time: newOrder.time,
-                partySize: newOrder.partySize,
-                table: newOrder.table,
-                firstName: newOrder.firstName,
-                lastName: newOrder.lastName,
-                phone: newOrder.phone,
-                email: newOrder.email
+                date: editOrder.date,
+                time: editOrder.time,
+                partySize: editOrder.partySize,
+                table: editOrder.table,
+                firstName: editOrder.firstName,
+                lastName: editOrder.lastName,
+                phone: editOrder.phone,
+                email: editOrder.email
             }),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
 
-        let reservation =await response.json()
-        addOrder(reservation)
+        let editedOrder =await response.json()
+        setOrders(editedOrder)
+        goToConfirmationPage()
+        console.log(editedOrder);
 
-        goToConfirmationPage(reservation._id)
     }
 
         const handleChange = (event) => {
         // console.log(event);
-        setNewOrder({...newOrder,[event.target.name]:event.target.value})
-        // setNewOrder(event.target.value)
+        setEditedOrder({...editOrder,[event.target.name]:event.target.value})
+        // seteditOrder(event.target.value)
         // console.log(event.target.value);
     }
     
@@ -82,7 +98,7 @@ const Reservation = ({addOrder}) => {
 									Date
 								</span>
                                 <div className="flex-wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="date" name="date" onChange={handleChange} value={newOrder.date} required />
+									<input className="my-calendar bo-rad-10 sizefull txt10 p-l-20"  type="date"  name="date" onChange={handleChange} value={editOrder.date} required />
 
 								</div>
 
@@ -93,8 +109,8 @@ const Reservation = ({addOrder}) => {
 
 									{/* <!-- Select2 --> */}
                                     <div className="flex-wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<FormSelect className="input sizefull txt10 p-l-20"  name="time" value={newOrder.time} onChange={handleChange} required >
-										<option value='9:00'>9:00 </option>
+									<FormSelect className="input sizefull txt10 p-l-20"  name="time" value={editOrder.time} onChange={handleChange} required >
+                                        <option value='9:00'>9:00 </option>
 										<option value='9:30'>9:30 </option>
 										<option value='10:00'>10:00</option>
 										<option value='10:30'>10:30</option>
@@ -123,8 +139,8 @@ const Reservation = ({addOrder}) => {
 
 								<div className="wrap-inputpeople size12 bo2 bo-rad-10 m-t-3 m-b-23">
 									{/* <!-- Select2 --> */}
-									<FormSelect className="input sizefull txt10 p-l-20" name="partySize" value={newOrder.partySize} onChange={handleChange} required >
-										<option value='1 person'>1 person</option>
+									<FormSelect className="input sizefull txt10 p-l-20" name="partySize" value={editOrder.partySize} onChange={handleChange} required >
+                                        <option value='1 person'>1 person</option>
                                         <option value='2 people'>2 people</option>
 										<option value='3 people'>3 people</option>
 										<option value='4 people'>4 people</option>
@@ -147,8 +163,7 @@ const Reservation = ({addOrder}) => {
 
 								<div className="wrap-inputtable size12 bo2 bo-rad-10 m-t-3 m-b-23">
 									{/* <!-- Select2 --> */}
-									<FormSelect value='' className="input sizefull txt10 p-l-20" name="table" placeholder='Choose Your Table' value={newOrder.table} onChange={handleChange}>
-                                        <option value="" disabled>Choose your table ...</option>
+									<FormSelect className="input sizefull txt10 p-l-20" name="table" placeholder='Choose Your Table' value={editOrder.table} onChange={handleChange}>
                                         <option value='1'>1</option>
 										<option value='2'>2</option>
 										<option value='3'>3</option>
@@ -177,7 +192,7 @@ const Reservation = ({addOrder}) => {
 								</span>
 
 								<div className="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="firstName" placeholder="First Name" value={newOrder.firstName} onChange={handleChange} required />
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="firstName"  value={editOrder.firstName} onChange={handleChange} required />
 								</div>
 
                                 {/* <!-- Last name --> */}
@@ -186,7 +201,7 @@ const Reservation = ({addOrder}) => {
 								</span>
 
 								<div className="wrap-inputlastname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="lastName" placeholder="Last Name" onChange={handleChange} value={newOrder.lastName} />
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="lastName"  onChange={handleChange} value={editOrder.lastName} />
 								</div>
 
 								{/* <!-- Phone --> */}
@@ -195,7 +210,7 @@ const Reservation = ({addOrder}) => {
 								</span>
 
 								<div className="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" onChange={handleChange} value={newOrder.phone} required />
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone"  onChange={handleChange} value={editOrder.phone} required />
 								</div>
 
 								{/* <!-- Email --> */}
@@ -204,7 +219,7 @@ const Reservation = ({addOrder}) => {
 								</span>
 
 								<div className="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" onChange={handleChange} value={newOrder.email} required />
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" onChange={handleChange} value={editOrder.email} required />
 								</div>
 							</Col>
                     </Row>
@@ -235,4 +250,5 @@ const Reservation = ({addOrder}) => {
   );
 };
 
-export default Reservation;
+
+export default EditOrder

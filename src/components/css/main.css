@@ -161,7 +161,10 @@ input[type="date" i] {
   height: 100px;
 }
 
-
+.menuAndDirectionLinks {
+	font-size: 2rem;
+	text-decoration: none;
+}
 
 
 
