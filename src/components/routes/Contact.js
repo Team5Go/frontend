@@ -2,6 +2,7 @@ import React from 'react';
 import FoodImage from '../FoodImage';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import '../App.css'
 
 const Contact = () => {
   return (

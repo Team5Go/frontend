@@ -41,7 +41,7 @@ const Confirmation = ({setOrders}) => {
             }
         })
 
-        let allOrders = await data.json()
+        // let allOrders = await data.json()
         
         goToReservationPage()
         // if(allOrders) {

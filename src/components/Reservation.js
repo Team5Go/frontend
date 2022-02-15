@@ -9,6 +9,7 @@ import bookingImage from './images/planOfRestaurant.jpg'
 
 import './css/main.css'
 import './css/util.css'
+import Navbar from '../files/Navbar';
 
 const Reservation = ({addOrder}) => {
 
@@ -61,6 +62,8 @@ const Reservation = ({addOrder}) => {
     
 
   return (
+	  <>
+	<Navbar />
    <Container>
        <Row>
            <Col className='col-lg-6 pb-30'>
@@ -231,6 +234,7 @@ const Reservation = ({addOrder}) => {
   
        
    </Container>
+   </>
 
   );
 };
