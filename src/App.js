@@ -30,7 +30,7 @@ let getOrders = async () => {
 
 useEffect(()=>{
   getOrders()
-// This empty brackets means only run on component mount
+
 },[])
 
 let addOrder = (order) =>{
