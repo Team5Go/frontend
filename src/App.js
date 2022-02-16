@@ -12,6 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Home from './files/routes/Home';
 import About from './files/routes/About';
 import Contact from './files/routes/Contact';
+import Menu from './components/menu/Menu';
+import Cart from './components/menu/Cart';
+import { CartProvider } from 'react-use-cart';
 
 function App() {
   const [orders, setOrders] = useState([])
@@ -45,8 +48,11 @@ let addOrder = (order) =>{
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/menu' element={ <CartProvider> <Menu /> </CartProvider>} />
+        <Route path='/menu/cart' element={<CartProvider> <Cart /> </CartProvider>} />
       </Routes>
     </div>
+    
   );
 }
 
