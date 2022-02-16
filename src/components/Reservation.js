@@ -20,7 +20,7 @@ const Reservation = ({addOrder}) => {
         table: '',
         firstName: '',
         lastName: '',
-        phone: '',
+        phoneNumber: '',
         email: ''
     })
 
@@ -39,8 +39,8 @@ const Reservation = ({addOrder}) => {
                 table: newOrder.table,
                 firstName: newOrder.firstName,
                 lastName: newOrder.lastName,
-                phone: newOrder.phone,
-                email: newOrder.email
+                phoneNumber: newOrder.phoneNumber,
+                email: newOrder.email, 
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -198,7 +198,7 @@ const Reservation = ({addOrder}) => {
 								</span>
 
 								<div className="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" onChange={handleChange} value={newOrder.phone} required />
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phoneNumber" placeholder="Phone" onChange={handleChange} value={newOrder.phoneNumber} required />
 								</div>
 
 								{/* <!-- Email --> */}

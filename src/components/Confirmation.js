@@ -106,7 +106,7 @@ const Confirmation = ({setOrders}) => {
                             </tr>
                             <tr>
                                 <td>Phone:</td>
-                                <td>{showOrder.phone}</td>
+                                <td>{showOrder.phoneNumber}</td>
                             </tr>
                             <tr>
                                 <td>Email:</td>
