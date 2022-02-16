@@ -69,8 +69,9 @@
 
 /* nav scroll background effect */
 .header-bg {
-    background-color: antiquewhite;
+    background-color: #ffffff;
     transition: .5s;
+    opacity: 0.8;
 }
 
 
@@ -210,50 +211,7 @@
 
 
 
-/*--------------------------------------- CONTACT FORM START -------------------------------------*/
-label {
-    color: red;
-}
 
-form {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    margin: auto;
-    max-width: 600px;
-    background-color: rgb(7, 7, 6);
-    
-}
-
-form label {
-    margin-bottom: .5rem;
-}
-
-form input, textarea {
-    margin-bottom: 1rem;
-    padding: 10px 18px;
-    font-size: 1.2rem;
-    font-family: 'Outfit' sans-serif;
-    background: white;
-    border-color: rgba(255, 255, 255, .1);
-    color: #000;
-}
-
-form .btn {
-    background-color: red;
-    color: #FFFFFF;
-    /* padding: 10px; */
-    border-radius: 10px;
-    /* -moz-border-radius: 10px;
-    -webkit-border-radius: 10px; */
-    /* margin:10px; */
-    width: 120px;
-    height: 40px;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-}
-/*----------------------------------------- CONTACT FORM END ----------------------------------------------------*/
 
 
 

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -8,7 +7,6 @@ import Table from 'react-bootstrap/Table'
 
 import './css/main.css'
 import './css/util.css'
-import check from './images/check-2.jpg'
 
 //icons
 import  {FaCheckCircle, FaEdit,  } from 'react-icons/fa'
@@ -41,32 +39,18 @@ const Confirmation = ({setOrders}) => {
             }
         })
 
-        // let allOrders = await data.json()
-        
+   
         goToReservationPage()
-        // if(allOrders) {
-            
-        //     setOrders(allOrders)
-            
-        // }
-        
+   
     }
-
-    // Redirect to edit page
 
 
   return (
       <Container className='bg-light'>
-        {showOrder?( <Col className='d-flex flex-column vh-100 overflow-hidden'>
-                    {/* <Row  >
-                
-                    <header className='bg-dark pb-3'>
-                    <h1 className='tit2 p-t-10'>Restaurant</h1>  
-                    </header>
-                    </Row> */}
+        {showOrder?( <Col className='d-flex flex-column  hv-100'>
+
                     <Row className='t-center'>
                       <div className='p-t-40 p-b-20'>
-                      {/* <img src={check} alt='icon' className='check' /> */}
                       <FaCheckCircle size='7em' color='#5ba508'/>
                       </div>        
                     </Row>
@@ -79,7 +63,7 @@ const Confirmation = ({setOrders}) => {
 
                     <Row>
                     
-                        <Table className='m-l-20'>
+                        <Table className='m-l-20 mx-auto'>
                             <thead>
                                 <tr>
                                     <th>Order Details</th>
@@ -130,7 +114,7 @@ const Confirmation = ({setOrders}) => {
                             <p>Ballwin, MO 63011</p>
                             <p>(636) 207-9464</p>
                         </div>
-                        <div>
+                        <div className='p-b-50'>
                             <div className='d-inline p-r-40' style={{'cursor': 'pointer'}} onClick={goToEditPage}>
                             <FaEdit variant='primary'  size='3em' color='#dc5722'  /> Modify
                             </div>
@@ -139,15 +123,7 @@ const Confirmation = ({setOrders}) => {
                             </div>
                         </div>
                     </Row>
-                
-                    {/* 
-                    <Row >
-                        <footer class="py-3 bg-dark mt-auto w-100 fixed-bottom">
-                            <p class="m-0 text-center text-white">Copyright Restaurant 2022</p>
-                        </footer>  
-                    </Row> */}
-                            
-            
+                          
           </Col>
           ): null}
       </Container>

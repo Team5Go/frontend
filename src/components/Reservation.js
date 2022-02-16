@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -65,7 +65,7 @@ const Reservation = ({addOrder}) => {
 	  <>
 	<Navbar />
    <Container>
-       <Row>
+       <Row className='p-t-80'>
            <Col className='col-lg-6 pb-30'>
                 <div className="t-center">
                     <span className="tit2 text-center">
@@ -150,7 +150,7 @@ const Reservation = ({addOrder}) => {
 
 								<div className="wrap-inputtable size12 bo2 bo-rad-10 m-t-3 m-b-23">
 									{/* <!-- Select2 --> */}
-									<FormSelect value='' className="input sizefull txt10 p-l-20" name="table" placeholder='Choose Your Table' value={newOrder.table} onChange={handleChange}>
+									<FormSelect className="input sizefull txt10 p-l-20" name="table" placeholder='Choose Your Table' value={newOrder.table} onChange={handleChange}>
                                         <option value="" disabled>Choose your table ...</option>
                                         <option value='1'>1</option>
 										<option value='2'>2</option>

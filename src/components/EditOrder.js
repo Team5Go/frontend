@@ -19,7 +19,7 @@ const EditOrder = ({setOrders}) => {
         table: '',
         firstName: '',
         lastName: '',
-        phone: '',
+        phoneNumber: '',
         email: ''
     })
     console.log(editOrder);
@@ -53,7 +53,7 @@ const EditOrder = ({setOrders}) => {
                 table: editOrder.table,
                 firstName: editOrder.firstName,
                 lastName: editOrder.lastName,
-                phone: editOrder.phone,
+                phoneNumber: editOrder.phoneNumber,
                 email: editOrder.email
             }),
             headers: {
@@ -210,7 +210,7 @@ const EditOrder = ({setOrders}) => {
 								</span>
 
 								<div className="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone"  onChange={handleChange} value={editOrder.phone} required />
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phoneNumber"  onChange={handleChange} value={editOrder.phoneNumber} required />
 								</div>
 
 								{/* <!-- Email --> */}
