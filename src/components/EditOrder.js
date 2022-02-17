@@ -19,18 +19,18 @@ const EditOrder = ({setOrders}) => {
         table: '',
         firstName: '',
         lastName: '',
-        phone: '',
+        phoneNumber: '',
         email: ''
     })
-    console.log(editOrder);
 
     const {id} = useParams()
 
+	const url = process.env.NODE_ENV === "production" ? process.env.REACT_APP_URL : process.env.REACT_APP_LOCAL;
+
     useEffect(() => {
-        fetch('http://localhost:4000/'+id)
+        fetch(`${url}/${id}`)
         .then((res) => res.json())
         .then((resJson) => {
-            console.log(resJson);
             setEditedOrder(resJson)
         })
         .catch(error => console.error({'Error': error}))
@@ -44,7 +44,7 @@ const EditOrder = ({setOrders}) => {
         console.log(e);
 
         e.preventDefault()
-        let response = await fetch('http://localhost:4000/edit/'+id, {
+        let response = await fetch(`${url}/edit/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 date: editOrder.date,
@@ -53,7 +53,7 @@ const EditOrder = ({setOrders}) => {
                 table: editOrder.table,
                 firstName: editOrder.firstName,
                 lastName: editOrder.lastName,
-                phone: editOrder.phone,
+                phoneNumber: editOrder.phoneNumber,
                 email: editOrder.email
             }),
             headers: {
@@ -210,7 +210,7 @@ const EditOrder = ({setOrders}) => {
 								</span>
 
 								<div className="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone"  onChange={handleChange} value={editOrder.phone} required />
+									<input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phoneNumber"  onChange={handleChange} value={editOrder.phoneNumber} required />
 								</div>
 
 								{/* <!-- Email --> */}
@@ -235,7 +235,7 @@ const EditOrder = ({setOrders}) => {
 
            <div className="col-lg-6 p-b-30 p-t-18">
            <h3 className="tit10 t-center m-b-35 m-t-2">
-                         Furniture Plan
+                         Seating Plan
                     </h3>
 					<div className="bo-rad-10 p-t-50 hov-img-zoom m-l-r-auto">
 						<img src={bookingImage} alt="IMG-OUR" />

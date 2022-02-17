@@ -26,11 +26,13 @@ const Reservation = ({addOrder}) => {
 
     const navigate = useNavigate()
     const goToConfirmationPage = (id) => navigate('/reservation/' + id)
+
+	const url = process.env.NODE_ENV === "production" ? process.env.REACT_APP_URL : process.env.REACT_APP_LOCAL;
     
     const handleSubmit = async (e) => {
         // console.log(order);
         e.preventDefault()
-        let response = await fetch('http://localhost:4000', {
+        let response = await fetch(url, {
             method: 'POST',
             body: JSON.stringify({
                 date: newOrder.date,
@@ -222,8 +224,8 @@ const Reservation = ({addOrder}) => {
            </Col>
 
            <div className="col-lg-6 p-b-30 p-t-18">
-           <h3 className="tit10 t-center m-b-35 m-t-2">
-                         Furniture Plan
+           <h3 className="tit10 t-center m-b-25 m-t-60">
+                         Seating Plan
                     </h3>
 					<div className="bo-rad-10 p-t-50 hov-img-zoom m-l-r-auto">
 						<img src={bookingImage} alt="IMG-OUR" />

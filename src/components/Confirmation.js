@@ -21,8 +21,10 @@ const Confirmation = ({setOrders}) => {
     const goToReservationPage = () => navigate('/reservation')
     const goToEditPage = () => navigate('/edit/' + id)
 
+    const url = process.env.NODE_ENV === "production" ? process.env.REACT_APP_URL : process.env.REACT_APP_LOCAL;
+
     useEffect(() => {
-        const url = process.env.NODE_ENV === "production" ? process.env.REACT_APP_URL : process.env.REACT_APP_LOCAL;
+        
         fetch(`${url}/${id}`)
         .then((res) => res.json())
         .then((resJson) => {
@@ -34,7 +36,7 @@ const Confirmation = ({setOrders}) => {
 
     // Delete rotue
     let deleteOrder = async (id) => {
-        let data = await fetch('http://localhost:4000/' + id, {
+        let data = await fetch(`${url}/${id}`, {
             method: 'DELETE',
             body: null,
             headers: {

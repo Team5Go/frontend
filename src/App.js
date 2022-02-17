@@ -16,9 +16,10 @@ import Contact from './files/routes/Contact';
 function App() {
   const [orders, setOrders] = useState([])
 
+  const url = process.env.NODE_ENV === "production" ? process.env.REACT_APP_URL : process.env.REACT_APP_LOCAL;
 
 let getOrders = async () => {
-  let data = await fetch('http://localhost:4000')
+  let data = await fetch(url)
   let json = await data.json()
   if(json){
     setOrders(json)
