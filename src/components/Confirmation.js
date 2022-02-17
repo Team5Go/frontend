@@ -22,7 +22,8 @@ const Confirmation = ({setOrders}) => {
     const goToEditPage = () => navigate('/edit/' + id)
 
     useEffect(() => {
-        fetch('http://localhost:4000/'+id)
+        const url = process.env.NODE_ENV === "production" ? process.env.REACT_APP_URL : process.env.REACT_APP_LOCAL;
+        fetch(`${url}/${id}`)
         .then((res) => res.json())
         .then((resJson) => {
             console.log(resJson);
