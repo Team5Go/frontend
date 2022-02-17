@@ -9,6 +9,7 @@ import './css/util.css'
 //icons
 import  {FaCheckCircle, FaEdit,  } from 'react-icons/fa'
 import {GiCancel} from 'react-icons/gi'
+
 const Confirmation = ({setOrders}) => {
     const [showOrder, setShowOrder] = useState()
     const {id} = useParams()
@@ -35,6 +36,7 @@ const Confirmation = ({setOrders}) => {
         })
         goToReservationPage()
     }
+    
   return (
       <Container className='bg-light'>
         {showOrder?( <Col className='d-flex flex-column  hv-100'>
@@ -87,7 +89,7 @@ const Confirmation = ({setOrders}) => {
                     </Row>
                     <Row className='t-center p-t-30'>
                         <h2>
-                            <Link className='menuAndDirectionLinks' to='/'>See menu</Link> | <Link className='menuAndDirectionLinks' to='https://www.google.com/maps/place/15240+Manchester+Rd,+Ballwin,+MO+63011/@38.592305,-90.5584187,17z/data=!3m1!4b1!4m5!3m4!1s0x87d8d448e3f93b41:0x8d1ba94fcfa1909e!8m2!3d38.592305!4d-90.55623'>Get directions</Link>
+                            <Link className='menuAndDirectionLinks' to='/menu'>See menu</Link> | <Link className='menuAndDirectionLinks' to='https://www.google.com/maps/place/15240+Manchester+Rd,+Ballwin,+MO+63011/@38.592305,-90.5584187,17z/data=!3m1!4b1!4m5!3m4!1s0x87d8d448e3f93b41:0x8d1ba94fcfa1909e!8m2!3d38.592305!4d-90.55623'>Get directions</Link>
                         </h2>
                         <div>
                             <p>15240 Manchester Rd</p>

@@ -105,8 +105,14 @@ button:hover {
 ///////////////////////////////////////////////////////////
 */
 .btn3 {
-  background: #111111;
+  background: #222222;
   border-radius: 10px;
+}
+
+.btn3:active {
+    transform: scale(0.90);
+box-shadow: 0 0 20px gray;
+background-color: grey;
 }
 
 .btn3:hover {
@@ -114,58 +120,44 @@ button:hover {
   color: white;
 }
 
-
-
-/*[ Calendar ]
-///////////////////////////////////////////////////////////
-*/
-td.active {
-  background-color: #ec1d25 !important;
+/* Menu Title */
+.h2-menu {
+	/* background-color: red; */
 }
 
-input[type="date" i] {
-  padding: 14px;
+/* Show Card Button */
+
+.showCard {
+	position: fixed;
+	width: 80px;
+	height: 40px;
+	top: 100px;
+	right: -8px;
+	background-color: red;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+	border-radius: 4px;
+	
 }
 
-.table-condensed td, .table-condensed th {
-  font-size: 14px;
-  font-family: Montserrat;
-  font-weight: 400;
-}
-.daterangepicker {
-    width: 339px;
-    box-shadow: 0px 3px 25px rgba(0,0,0,0.1);
-    border: none;
-    margin-top: 10px;
-}
-.daterangepicker .calendar {
-  max-width: inherit;
-}
-.daterangepicker thead tr th {
-  padding: 10px 0;
-}
-.daterangepicker .table-condensed th select {
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 15px;
-  padding: 5px;
-}
-.daterangepicker td {
-    width: 60px;
-    height: 35px;
-}
-
-
-.check {
-  width: 100px;
-  height: 100px;
-}
-
-.menuAndDirectionLinks {
-	font-size: 2rem;
-	text-decoration: none;
-}
-
+.showCardButton {
+	font-size: 22px;
+	color: white;
+	line-height: 1em;
+  }
+  
+.showCard:hover {
+	opacity: 1;
+	cursor: pointer;
+	background-color: black;
+}  
+  @media (max-width: 576px) {
+	.showCard {
+	  bottom: 15px;
+	  right: 15px;
+	}
+  }
 
 
 
