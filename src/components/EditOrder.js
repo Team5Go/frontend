@@ -41,7 +41,7 @@ const EditOrder = ({setOrders}) => {
     const goToConfirmationPage = () => navigate('/reservation/'+id)
     
     const handleSubmit = async (e) => {
-        console.log(e);
+        // console.log(e);
 
         e.preventDefault()
         let response = await fetch(`${url}/edit/${id}`, {
@@ -64,7 +64,7 @@ const EditOrder = ({setOrders}) => {
         let editedOrder =await response.json()
         setOrders(editedOrder)
         goToConfirmationPage()
-        console.log(editedOrder);
+        
 
     }
 

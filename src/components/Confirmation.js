@@ -24,7 +24,6 @@ const Confirmation = ({setOrders}) => {
         fetch(`${url}/${id}`)
         .then((res) => res.json())
         .then((resJson) => {
-            console.log(resJson);
             setShowOrder(resJson)
         })
         .catch(error => console.error({'Error': error}))

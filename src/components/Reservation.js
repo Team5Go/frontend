@@ -46,8 +46,6 @@ const Reservation = ({addOrder}) => {
         })
         let reservation =await response.json()
         addOrder(reservation)
-		console.log(reservation);
-		console.log(newOrder);
         goToConfirmationPage(reservation._id)
     }
         const handleChange = (event) => {
