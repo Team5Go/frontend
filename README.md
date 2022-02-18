@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+### Project Idea
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Team 5's project is a restaurant application that enables diners to book a table for a convenient restaurant dine-in experience without the wait. Our application's primary functionaility is allowing diners to reserve a table at our world-renowned restaurant with the click or touch of a button. Diners will receive confirmation of their reservation via email with the option of modifying or canceling their reservation to create the best user experience.
 
-## Available Scripts
+### List of Models & Their Properties
 
-In the project directory, you can run:
+**Reservation Model**
 
-### `npm start`
+- First name: {type: String, required: true},
+- Last name: {type: String, required: true},
+- Email: {type: String, required: true},
+- Date: {type: Date, default: Date.now }
+- Time:{type: String, required: true},
+- Party Size: {type: Number, default: 1 required: true}
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Scrum Master
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> Isaiah Weatherspoon
 
-### `npm test`
+### Wireframes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Initial_Landing_Display](https://user-images.githubusercontent.com/90514977/152890218-f0cf3b22-8888-4e5c-8b5e-a9a75359b93d.png)
 
-### `npm run build`
+![Order_Page](https://user-images.githubusercontent.com/90514977/152890280-7341acbd-e4db-4d78-badd-a5d4d631b9e4.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![_Email_Page](https://user-images.githubusercontent.com/90514977/152890327-748b21a5-3dad-4dbf-b51e-bfe822eb8b3b.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### MVP
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- A a user, I would like to be able to make a reservation.
+- As a user, I would like to choose a date and time of my choice.
+- As a user, I would like to choose the size of my party.
+- As a user, I would like to have the option to choose the type of table that best suits my party size (booth, table, private room, outdoor, etc.).
+- As a user, I would like to receive confirmation of my reservation with a summary of reservation details.
+- As a user, I would like to be able to conveniently cancel or edit my reservation as needed.
 
-### `npm run eject`
+### Stretch Goals
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- As a user, I would like the ability to order a dish online for pick-up.
+- As a user, I would like to choose the seat of my choice based on a table illustration.
+- As a user I would like to view the tables that are available and unavailable.
+- As a user, I would like to have access to the menu before and after I make my reservation.
+- As a user, I would like to see where the restaurant is located on a map.
+- A a user, I would like to be provided with directions to the restaurant.
