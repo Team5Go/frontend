@@ -30,19 +30,18 @@ function App() {
     emptyCart
  } = useCart()
 
+// let getOrders = async () => {
+//   let data = await fetch('http://localhost:4000')
+//   let json = await data.json()
+//   if(json){
+//     setOrders(json)
+//   }
+// }
 
-let getOrders = async () => {
-  let data = await fetch('http://localhost:4000')
-  let json = await data.json()
-  if(json){
-    setOrders(json)
-  }
-}
+// useEffect(()=>{
+//   getOrders()
 
-useEffect(()=>{
-  getOrders()
-
-},[])
+// },[])
 
 let addOrder = (order) =>{
   setOrders([...orders, order])

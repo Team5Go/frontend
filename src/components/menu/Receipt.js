@@ -4,7 +4,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
-//CSS
 import './css/main.css'
 import './css/util.css'
 //icons
@@ -18,7 +17,7 @@ const Confirmation = ({setOrders}) => {
     const goToHomePage = () => navigate('/')
     const goToEditPage = () => navigate('/edit/' + id)
     useEffect(() => {
-        fetch('http://localhost:4000/'+id)
+        fetch('http://localhost:4000/cart'+id)
         .then((res) => res.json())
         .then((resJson) => {
             console.log(resJson);
@@ -26,7 +25,6 @@ const Confirmation = ({setOrders}) => {
         })
         .catch(error => console.error({'Error': error}))
     }, [])
-    
     // Delete rotue
     let deleteOrder = async (id) => {
         let data = await fetch('http://localhost:4000/' + id, {
@@ -41,12 +39,11 @@ const Confirmation = ({setOrders}) => {
     
   return (
       <Container className='bg-light'>
-            {showOrder?( 
-                <Col className='d-flex flex-column  hv-100'>
+        {showOrder !== null ?( <Col className='d-flex flex-column  hv-100'>
                     <Row className='t-center'>
-                        <div className='p-t-40 p-b-20'>
-                            <FaCheckCircle size='7em' color='#5BA508'/>
-                        </div>        
+                      <div className='p-t-40 p-b-20'>
+                      <FaCheckCircle size='7em' color='#5BA508'/>
+                      </div>        
                     </Row>
                     <Row className='t-center'>
                         <h1 className='tit2'>Hey {showOrder.firstName} {showOrder.lastName}</h1>
@@ -101,15 +98,15 @@ const Confirmation = ({setOrders}) => {
                         </div>
                         <div className='p-b-50'>
                             <div className='d-inline p-r-40' style={{'cursor': 'pointer'}} onClick={goToEditPage}>
-                                <FaEdit variant='primary'  size='3em' color='#DC5722'  /> Modify
+                            <FaEdit variant='primary'  size='3em' color='#DC5722'  /> Modify
                             </div>
                             <div className='d-inline' style={{'cursor': 'pointer'}} onClick={(e) => deleteOrder(showOrder._id)}>
-                                <GiCancel variant='warning'  size='3em'color='#DC5722' /> Cancel
+                            <GiCancel variant='warning'  size='3em'color='#DC5722' /> Cancel
                             </div>
                         </div>
                     </Row>
-                </Col>
-            ): null}
+          </Col>
+          ): null}
       </Container>
   )
 };
