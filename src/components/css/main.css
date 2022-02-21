@@ -85,12 +85,6 @@ select {
 
 }
 
-
-
-textarea {
-  outline: none;
-}
-
  input:focus {
 	border-color: transparent !important;
 	box-shadow: 0 0 0px 2px #ec1d25;
@@ -120,10 +114,7 @@ textarea {
 	-ms-box-shadow: 0 0 0px 2px #ec1d25;
   }
   
-/* .select2 {
-	height: 50px;
-	overflow: auto;
-} */
+
 
 
 button {
@@ -199,6 +190,18 @@ background-color: grey;
 	  bottom: 15px;
 	  right: 15px;
 	}
+  }
+
+  /* Receipt */
+
+  .totalPrice {
+	padding-right: 10%;
+	justify-content: center; 
+  }
+
+  .totalPrice tr, .userInfo tr {
+	border-top-style: hidden !important;
+	border-bottom-style: hidden !important;
   }
 
 

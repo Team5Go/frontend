@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../../files/Navbar';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -7,26 +7,15 @@ import Form from "react-bootstrap/Form";
 import Background from '../images/pattern1.png'
 
 
-const Cart = ({
+const EditFoodOrder = ({
     isEmpty,
-    totalUniqueItems,
-    items,
-    totalItems,
-    cartTotal,
     updateItemQuantity,
     removeItem,
     emptyCart,
     setFoodOrders
-    }) => {
+}) => {
 
-        
-    // Redirect to another page      
-    const navigate = useNavigate()
-    const menuPage = () => navigate('/menu')
-    const goToConfirmationPage = (id) => navigate('/menu/cart/' + id)
-
-    
-    const[newFoodOrder, setNewFoodOrder] = useState({
+    const [editFoodOrder, seteditFoodOrder] = useState({
         firstName: '',
         lastName: '',
         email: '',
@@ -36,21 +25,39 @@ const Cart = ({
         items: ''
     })
 
-    // console.log(newFoodOrder);
+    const {id} = useParams()
+
+    useEffect(() => {
+        fetch('http://localhost:4000/menu/cart/'+id)
+        .then((res) => res.json())
+        .then((resJson) => {
+            console.log(resJson);
+            seteditFoodOrder(resJson)
+        })
+        .catch(error => console.error({'Error': error}))
+    }, [])
+      
+    // Redirect to another page      
+    const navigate = useNavigate()
+    const menuPage = () => navigate('/menu')
+    const goToConfirmationPage = (id) => navigate('/menu/cart/' + id)
+
+   
+    // console.log(editFoodOrder);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         let response = await fetch('http://localhost:4000/menu/cart', {
-            method: 'POST',
+            method: 'PUT',
             body: JSON.stringify({
-                firstName: newFoodOrder.firstName,
-                lastName: newFoodOrder.lastName,
-                email: newFoodOrder.email,
-                totalUniqueItems: newFoodOrder.totalUniqueItems,
-                totalItems: newFoodOrder.totalItems,
-                cartTotal: newFoodOrder.cartTotal,
-                items: newFoodOrder.items
+                firstName: editFoodOrder.firstName,
+                lastName: editFoodOrder.lastName,
+                email: editFoodOrder.email,
+                totalUniqueItems: editFoodOrder.totalUniqueItems,
+                totalItems: editFoodOrder.totalItems,
+                cartTotal: editFoodOrder.cartTotal,
+                items: editFoodOrder.items
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -63,12 +70,9 @@ const Cart = ({
 
 
     const handleChange = (event) => {
-        setNewFoodOrder({...newFoodOrder,
-             [event.target.name]: event.target.value, 
-             totalUniqueItems: totalUniqueItems,
-             totalItems: totalItems,
-             cartTotal: cartTotal,
-             items: items })
+        seteditFoodOrder({...editFoodOrder,
+             [event.target.name]: event.target.value
+})
     }
  
 
@@ -89,16 +93,18 @@ const Cart = ({
     // Else render choosed items
     return (
         <>
+
             <div className='p-b-100'>
                 <Navbar />
             </div>
+            {editFoodOrder?(
                 <div className='py-4 container'>
                     <div className='row justify-content-center'>
                         <div className='col-12'>
-                            <h5>Cart({totalUniqueItems}) total Items: ({totalItems}) </h5>
+                            <h5>Cart({editFoodOrder.totalUniqueItems}) total Items: ({editFoodOrder.totalItems}) </h5>
                             <table className='table table-light table-hover m-0'>
                                 <tbody>
-                                    {items.map((item) => {
+                                    {editFoodOrder.items.map((item) => {
                                         return (
                                             <tr key={item.id}>
                                                 <td>
@@ -128,7 +134,7 @@ const Cart = ({
                             </table>
                         </div>
                         <div className='col-auto ms-auto'>
-                            <h2>Total Price: ${cartTotal.toFixed(2)}</h2>          
+                            <h2>Total Price: ${editFoodOrder.cartTotal.toFixed(2)}</h2>          
                         </div>
                         <div className='col-auto'>
                             <button className='btn btn-secondary' onClick={menuPage}>See Menu</button>
@@ -141,7 +147,7 @@ const Cart = ({
                     </div>
                 </div>
                  
-
+                 ): null}
        
             
             {/* Menu-order-form modal window */}
@@ -157,21 +163,21 @@ const Cart = ({
                                 First Name
                             </span>
                             <div className="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="firstName" placeholder="First Name" value={newFoodOrder.firstName} onChange={handleChange}   required />
+                                <input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="firstName" placeholder="First Name" value={editFoodOrder.firstName} onChange={handleChange}   required />
                             </div>
                             {/* <!-- Last name --> */}
                             <span className="txt9">
                                 Last Name
                             </span>
                             <div className="wrap-inputlastname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="lastName" placeholder="Last Name" onChange={handleChange} value={newFoodOrder.lastName} />
+                                <input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="lastName" placeholder="Last Name" onChange={handleChange} value={editFoodOrder.lastName} />
                             </div>
                             {/* <!-- Email --> */}
                             <span className="txt9">
                                 Email
                             </span>
                             <div className="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                                <input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" onChange={handleChange} value={newFoodOrder.email} required />
+                                <input className="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" onChange={handleChange} value={editFoodOrder.email} required />
                             </div>
                         </Modal.Body>
                         <Modal.Footer style={{backgroundImage: `url(${Background})`}}>
@@ -186,8 +192,9 @@ const Cart = ({
                 </Modal>
             
             </div>
-
+        
         </>
     );
 };
-export default Cart;
+
+export default EditFoodOrder;

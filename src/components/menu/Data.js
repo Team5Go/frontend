@@ -60,63 +60,8 @@ const data = {
             name: 'Pine Nut Sbrisalona',
             description: 'Aenean condimentum ante erat',
             price: 45.09,
-        },
-        {
-            id: 9,
-            image: image3,
-            name: 'Juicy Orange',
-            description: '',
-            price: 2,
-        },
-        {
-            id: 10,
-            image: image1,
-            name: 'Juicy Grapes',
-            description: 'x, y, z',
-            price: 46,
-        },
-        {
-            id: 11,
-            image: image2,
-            name: 'Red Watermelon',
-            description: '',
-            price: 20,
-        },
-        {
-            id: 12,
-            image: image3,
-            name: 'Juicy Orange',
-            description: '',
-            price: 2,
-        },
-        {
-            id: 13,
-            image: image1,
-            name: 'Juicy Grapes',
-            description: 'x, y, z',
-            price: 46,
-        },
-        {
-            id: 14,
-            image: image2,
-            name: 'Red Watermelon',
-            description: '',
-            price: 20,
-        },
-        {
-            id: 15,
-            image: image3,
-            name: 'Juicy Orange',
-            description: '',
-            price: 2,
-        },
-        {
-            id: 15,
-            image: image3,
-            name: 'Juicy Orange',
-            description: '',
-            price: 2,
         }
+      
     ],
 };
 

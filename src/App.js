@@ -15,9 +15,13 @@ import Contact from './files/routes/Contact';
 import Menu from './components/menu/Menu';
 import Cart from './components/menu/Cart';
 import { useCart } from 'react-use-cart';
+import Receipt from './components/menu/Receipt';
+import EditFoodOrder from './components/menu/EditFoodOrder';
 
 function App() {
   const [orders, setOrders] = useState([])
+  const [foodOrders, setFoodOrders] = useState([])
+  
   const {
     addItem,
     isEmpty,
@@ -29,6 +33,18 @@ function App() {
     removeItem,
     emptyCart
  } = useCart()
+
+     const [menuItems, setMenuItems] = useState()
+
+    useEffect(() => {
+        fetch('http://localhost:4000/items/menu')
+        .then((res) => res.json())
+        .then((resJson) => {
+            setMenuItems(resJson)
+        })
+        .catch(error => console.error({'Error': error}))
+    }, [])
+
 
 // let getOrders = async () => {
 //   let data = await fetch('http://localhost:4000')
@@ -47,6 +63,10 @@ let addOrder = (order) =>{
   setOrders([...orders, order])
 }
 
+let addFoodOrder = (foodOrder) => {
+  setFoodOrders([...foodOrders, foodOrder ])
+}
+
   return (
     <div>
 
@@ -57,7 +77,7 @@ let addOrder = (order) =>{
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/menu' element={  <Menu totalItems={totalItems} addItem={addItem}/>} />
+        <Route path='/menu' element={  <Menu totalItems={totalItems} addItem={addItem} menuItems={menuItems} />} />
         <Route path='/menu/cart' element={<Cart 
           isEmpty={isEmpty}
           totalUniqueItems={totalUniqueItems}
@@ -67,7 +87,10 @@ let addOrder = (order) =>{
           updateItemQuantity={updateItemQuantity}
           removeItem={removeItem}
           emptyCart={emptyCart}
+          setFoodOrders={setFoodOrders}
         /> } />
+        <Route path='/menu/cart/:id' element={ <Receipt />} />
+        <Route path='/menu/edit/:id' element={<EditFoodOrder setFoodOrders={setFoodOrders} />} />
       </Routes>
 
     </div>

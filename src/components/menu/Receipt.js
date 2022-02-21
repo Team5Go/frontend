@@ -4,88 +4,125 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Table from 'react-bootstrap/Table'
-import './css/main.css'
-import './css/util.css'
+import '../css/main.css'
+import '../css/util.css'
 //icons
 import  {FaCheckCircle, FaEdit,  } from 'react-icons/fa'
 import {GiCancel} from 'react-icons/gi'
 
-const Confirmation = ({setOrders}) => {
-    const [showOrder, setShowOrder] = useState()
+const Receipt = () => {
+    
+    const[showReceipt, setShowReceipt] = useState()
     const {id} = useParams()
+
     const navigate = useNavigate()
-    const goToHomePage = () => navigate('/')
-    const goToEditPage = () => navigate('/edit/' + id)
+    const goToMenuPage = () => navigate('/menu')
+    const goToEditPage = () => navigate('/menu/edit/' + id)
+
+    let getOrderDetails = async () => {
+        let data = await fetch('http://localhost:4000/menu/cart/' + id)
+        let json = await data.json()
+        setShowReceipt(json)
+    }
+
     useEffect(() => {
-        fetch('http://localhost:4000/cart'+id)
-        .then((res) => res.json())
-        .then((resJson) => {
-            console.log(resJson);
-            setShowOrder(resJson)
-        })
-        .catch(error => console.error({'Error': error}))
+        getOrderDetails()
     }, [])
+
     // Delete rotue
     let deleteOrder = async (id) => {
-        let data = await fetch('http://localhost:4000/' + id, {
+        let data = await fetch('http://localhost:4000/menu/cart/' + id, {
             method: 'DELETE',
             body: null,
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        goToHomePage()
+        goToMenuPage()
+        // console.log('item was deleted');
     }
     
+    console.log(showReceipt);
+    
   return (
-      <Container className='bg-light'>
-        {showOrder !== null ?( <Col className='d-flex flex-column  hv-100'>
+      <Container className='bg-light' style={{'maxWidth': '800px'}}>
+          {showReceipt?(
+        <Col className='d-flex flex-column  hv-100'>
                     <Row className='t-center'>
                       <div className='p-t-40 p-b-20'>
                       <FaCheckCircle size='7em' color='#5BA508'/>
                       </div>        
                     </Row>
                     <Row className='t-center'>
-                        <h1 className='tit2'>Hey {showOrder.firstName} {showOrder.lastName}</h1>
+                        <h1 className='tit2'>Hey {showReceipt.firstName} {showReceipt.lastName}</h1>
                         <h1 className='txt4'>Thank You For Your Order!</h1>
-                        <p>We will be glad to see you in our restaurant.</p>
                     </Row>
                     <Row>
-                        <Table className='m-l-20 mx-auto'>
-                            <thead>
+                        <div className='pb-3 pt-4'>
+                            <Table className='userInfo d-inline' size='sm'>
+                                <tbody >
                                 <tr>
-                                    <th>Order Details</th>
+                                        <th>Order Details:</th>
+                                        
+                                    </tr>
+
+                                    <tr>
+                                        <td>Full Name:</td>
+                                        <td>{showReceipt.firstName} {showReceipt.lastName}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date:</td>
+                                        <td>{new Date().toLocaleDateString()}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td>{showReceipt.email} </td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </div>
+
+                        <div>
+                        <Table className='m-l-20 mx-auto'>
+                            <thead style={{'backgroundColor': '#e9ecef'}}>
+                                <tr>
+                                    <th>Item Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Date</td>
-                                <td>{new Date (showOrder.date).toLocaleDateString()}</td>
-                            </tr>
-                            <tr>
-                                <td>Time</td>
-                                <td>{showOrder.time}</td>
-                            </tr>
-                            <tr>
-                                <td>People</td>
-                                <td>{showOrder.partySize}</td>
-                            </tr>
-                            <tr>
-                                <td>Table</td>
-                                <td>{showOrder.table}</td>
-                            </tr>
-                            <tr>
-                                <td>Phone:</td>
-                                <td>{showOrder.phoneNumber}</td>
-                            </tr>
-                            <tr>
-                                <td>Email:</td>
-                                <td>{showOrder.email}</td>
-                            </tr>
-                            <tr>
-                            </tr>
+                                {showReceipt.items.map((item, index) => (
+                                    <tr key={index}>
+                                    <td>{item.name}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>${item.price}</td>  
+                                    <td>${item.itemTotal}</td>
+                                    </tr>
+                                ))}
+
                             </tbody>
+
                         </Table>
+                        </div>
+
+                        <div className='t-right p-r-40 p-t-30'>
+                            <Table className='totalPrice d-inline' size='sm'>
+                                <tbody >
+                                    <tr className='pt-3'>
+                                        <td></td>
+                                        <td>Subtotal:</td>
+                                        <td>{showReceipt.cartTotal.toFixed(2)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Total:</td>
+                                        <td>{showReceipt.cartTotal.toFixed(2)}</td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </div>
                     </Row>
                     <Row className='t-center p-t-30'>
                         <h2>
@@ -97,17 +134,17 @@ const Confirmation = ({setOrders}) => {
                             <p>(636) 207-9464</p>
                         </div>
                         <div className='p-b-50'>
-                            <div className='d-inline p-r-40' style={{'cursor': 'pointer'}} onClick={goToEditPage}>
-                            <FaEdit variant='primary'  size='3em' color='#DC5722'  /> Modify
+                            <div className='d-inline p-r-40' style={{'cursor': 'pointer'}} >
+                            <FaEdit variant='primary'  size='3em' color='#DC5722' onClick={goToEditPage} /> Modify
                             </div>
-                            <div className='d-inline' style={{'cursor': 'pointer'}} onClick={(e) => deleteOrder(showOrder._id)}>
-                            <GiCancel variant='warning'  size='3em'color='#DC5722' /> Cancel
+                            <div className='d-inline' style={{'cursor': 'pointer'}} >
+                            <GiCancel variant='warning'  size='3em'color='#DC5722' onClick={(e) => deleteOrder(showReceipt.id)} /> Cancel
                             </div>
                         </div>
                     </Row>
           </Col>
-          ): null}
-      </Container>
+        ): null}
+        </Container>
   )
 };
-export default Confirmation;
+export default Receipt;
