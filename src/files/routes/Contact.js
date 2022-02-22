@@ -14,7 +14,7 @@ const Contact = () => {
   return (
     <div>
         <Navbar />
-        <FoodImage heading='CONTACT.' text='Contact Restaurant' />
+        <FoodImage heading='CONTACT TEAM5' />
 			<Container className='justify-content-center size26'style={{'width': '450px'}}>
 				<Row className='p-t-40'>
         				<Form>

@@ -50,4 +50,5 @@ const Menu = ({totalItems, addItem, menuItems}) => {
     );
 };
 
+
 export default Menu;
