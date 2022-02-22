@@ -17,7 +17,7 @@ const Receipt = () => {
 
     const navigate = useNavigate()
     const goToMenuPage = () => navigate('/menu')
-    const goToEditPage = () => navigate('/menu/edit/' + id)
+    const goToEditPage = () => navigate('/menu/cart/edit/' + id)
 
     let getOrderDetails = async () => {
         let data = await fetch('http://localhost:4000/menu/cart/' + id)
@@ -87,8 +87,8 @@ const Receipt = () => {
                             <thead style={{'backgroundColor': '#e9ecef'}}>
                                 <tr>
                                     <th>Item Name</th>
-                                    <th>Price</th>
                                     <th>Quantity</th>
+                                    <th>Price</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
@@ -113,12 +113,12 @@ const Receipt = () => {
                                     <tr className='pt-3'>
                                         <td></td>
                                         <td>Subtotal:</td>
-                                        <td>{showReceipt.cartTotal.toFixed(2)}</td>
+                                        <td>${showReceipt.cartTotal.toFixed(2)}</td>
                                     </tr>
                                     <tr>
                                         <td></td>
                                         <td>Total:</td>
-                                        <td>{showReceipt.cartTotal.toFixed(2)}</td>
+                                        <td>${showReceipt.cartTotal.toFixed(2)}</td>
                                     </tr>
                                 </tbody>
                             </Table>

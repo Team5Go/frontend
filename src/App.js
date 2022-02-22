@@ -90,7 +90,12 @@ let addFoodOrder = (foodOrder) => {
           setFoodOrders={setFoodOrders}
         /> } />
         <Route path='/menu/cart/:id' element={ <Receipt />} />
-        <Route path='/menu/edit/:id' element={<EditFoodOrder setFoodOrders={setFoodOrders} />} />
+        <Route path='/menu/cart/edit/:id' element={<EditFoodOrder 
+        setFoodOrders={setFoodOrders} 
+        updateItemQuantity={updateItemQuantity}
+        removeItem={removeItem}
+        emptyCart={emptyCart}
+        />} />
       </Routes>
 
     </div>
