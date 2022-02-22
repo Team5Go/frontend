@@ -179,22 +179,11 @@
 }
 
 .food-img h1 {
-<<<<<<< HEAD
-    font-size: 2.4rem;
-    color: #fff;
-}
-
-.food-img p{
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: rgba(194, 36, 36, 0.822);
-=======
   font-size: 2.4rem;
 }
 
 .food-img p {
   font-size: 1.4rem;
->>>>>>> f8f9cc7 (revisions to styling)
 }
 
 @media screen and (max-width: 640px) {
@@ -283,32 +272,6 @@ form .btn {
   margin: auto;
 }
 
-<<<<<<< HEAD
-.footer h4{
-    font-size: 1.4rem;
-    padding: 1rem 0;
-    color: aliceblue;
-}
-
-.footer .logo {
-    font-weight: 800;
-    font-size: 1.6rem;
-    padding: 1rem 0;
-    color: antiquewhite
-}
-
-.footer .about {
-    font-weight: 800;
-    font-size: 1.6rem;
-    padding: 1rem 0;
-    color: antiquewhite;
-}
-
-.footer p {
-    font-size: 1.2rem;
-    padding: 1rem 0;
-    color: aliceblue;
-=======
 .footer h4 {
   font-size: 1.4rem;
   padding: 1rem 0;
@@ -330,7 +293,6 @@ form .btn {
 .footer p {
   font-size: 1.2rem;
   padding: 1rem 0;
->>>>>>> f8f9cc7 (revisions to styling)
 }
 
 .footer .location {
@@ -357,11 +319,3 @@ form .btn {
 }
 
 /*----------------------------------------- FOOTER END ---------------------------------------------------------*/
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> f8f9cc7 (revisions to styling)
