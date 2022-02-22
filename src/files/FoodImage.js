@@ -6,8 +6,7 @@ class FoodImage extends Component {
     return (
     <div className='food-img'>
         <div className='heading'>
-            <h1>{this.props.heading}</h1>
-            <p>{this.props.text}</p>
+            <h1 className='tit6'>{this.props.heading}</h1>
         </div>
 
     </div>

@@ -15,9 +15,13 @@ import Contact from './files/routes/Contact';
 import Menu from './components/menu/Menu';
 import Cart from './components/menu/Cart';
 import { useCart } from 'react-use-cart';
+import Receipt from './components/menu/Receipt';
+import EditFoodOrder from './components/menu/EditFoodOrder';
 
 function App() {
   const [orders, setOrders] = useState([])
+  const [foodOrders, setFoodOrders] = useState([])
+  
   const {
     addItem,
     isEmpty,
@@ -30,23 +34,51 @@ function App() {
     emptyCart
  } = useCart()
 
-  const url = process.env.NODE_ENV === "production" ? process.env.REACT_APP_URL : process.env.REACT_APP_LOCAL;
+  
 
-let getOrders = async () => {
-  let data = await fetch(url)
-  let json = await data.json()
-  if(json){
-    setOrders(json)
-  }
-}
+// let getOrders = async () => {
+//   let data = await fetch(url)
+//   let json = await data.json()
+//   if(json){
+//     setOrders(json)
+//   }
+// }
 
-useEffect(()=>{
-  getOrders()
+const url = process.env.NODE_ENV === "production" ? process.env.REACT_APP_URL : process.env.REACT_APP_LOCAL;
 
-},[])
+     const [menuItems, setMenuItems] = useState()
+
+    /// changes start here
+
+    useEffect(() => {
+        fetch(`${url}/items/menu`)
+        .then((res) => res.json())
+        .then((resJson) => {
+            setMenuItems(resJson)
+        })
+        .catch(error => console.error({'Error': error}))
+    }, [])
+
+// this code was commented out
+// let getOrders = async () => {
+//   let data = await fetch('http://localhost:4000')
+//   let json = await data.json()
+//   if(json){
+//     setOrders(json)
+//   }
+// }
+
+// useEffect(()=>{
+//   getOrders()
+
+// },[])
 
 let addOrder = (order) =>{
   setOrders([...orders, order])
+}
+
+let addFoodOrder = (foodOrder) => {
+  setFoodOrders([...foodOrders, foodOrder ])
 }
 
   return (
@@ -59,7 +91,7 @@ let addOrder = (order) =>{
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
-        <Route path='/menu' element={  <Menu totalItems={totalItems} addItem={addItem}/>} />
+        <Route path='/menu' element={  <Menu totalItems={totalItems} addItem={addItem} menuItems={menuItems} />} />
         <Route path='/menu/cart' element={<Cart 
           isEmpty={isEmpty}
           totalUniqueItems={totalUniqueItems}
@@ -69,7 +101,15 @@ let addOrder = (order) =>{
           updateItemQuantity={updateItemQuantity}
           removeItem={removeItem}
           emptyCart={emptyCart}
+          setFoodOrders={setFoodOrders}
         /> } />
+        <Route path='/menu/cart/:id' element={ <Receipt />} />
+        <Route path='/menu/cart/edit/:id' element={<EditFoodOrder 
+        setFoodOrders={setFoodOrders} 
+        updateItemQuantity={updateItemQuantity}
+        removeItem={removeItem}
+        emptyCart={emptyCart}
+        />} />
       </Routes>
 
     </div>

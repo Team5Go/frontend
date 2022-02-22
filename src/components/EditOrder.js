@@ -71,8 +71,6 @@ const EditOrder = ({setOrders}) => {
         const handleChange = (event) => {
         // console.log(event);
         setEditedOrder({...editOrder,[event.target.name]:event.target.value})
-        // seteditOrder(event.target.value)
-        // console.log(event.target.value);
     }
     
 
